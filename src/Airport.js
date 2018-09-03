@@ -3,11 +3,21 @@ function Airport() {
 }
 
 Airport.prototype.land = function(plane) {
-  this._planes.push(plane);
+  if (this.weatherReport() === 'stormy') {
+    throw new Error('Unable to land, stormy...')
+  } else {
+    console.log(this.weatherReport())
+    this._planes.push(plane);
+  }
 }
 
 Airport.prototype.takeoff = function(plane) {
-  this._planes.pop();
+  if (this.weatherReport() === 'stormy') {
+    throw new Error('Unable to takeoff, stormy...')
+  } else {
+    console.log(this.weatherReport())
+    this._planes.pop();
+  }
 }
 
 Airport.prototype.weatherReport = function() {
