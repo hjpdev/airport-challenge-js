@@ -11,6 +11,6 @@ describe("Airport", function() {
 
   it("should be able to land a plane", function() {
     airport.land(plane);
-    expect(airport.planes[0]).toEqual(plane);
+    expect(airport._planes).toEqual([plane]);
   });
 });
