@@ -24,4 +24,23 @@ describe("Airport", function() {
     expect(airport._planes).toEqual([]);
   });
 
+  describe('weatherReport', function() {
+    it('returns stormy or sunny', function() {
+      expect(['stormy', 'sunny']).toContain(airport.weatherReport())
+    });
+  });
+  
+  describe('stormy weather', function(){
+
+    beforeEach(function() {
+      spyOn(airport, 'weatherReport').and.returnValue('stormy');
+    })
+
+    it('doesn\'t allow planes to land if stormy', function() {
+      expect(airport.land(plane)).toThrow(new Error('Unable to land, stormy...'));
+    });
+    it('doesn\'t allow planes to take off when stormy', function() {
+      expect(airport.takeoff).toThrow(new Error('Unable to takeoff, stormy...'));
+    });
+  });
 });
