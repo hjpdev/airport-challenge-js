@@ -1,10 +1,13 @@
 function Airport() {
-  this._planes = []
+  this._planes = [];
+  this.MAX_CAPACITY = 10;
 }
 
 Airport.prototype.land = function(plane) {
   if (this.weatherReport() === 'stormy') {
     throw new Error('Unable to land, stormy...')
+  } else if (this._planes.length >= this.MAX_CAPACITY) {
+    throw new Error('Unable to land, full...')
   } else {
     console.log(this.weatherReport())
     this._planes.push(plane);

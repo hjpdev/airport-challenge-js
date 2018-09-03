@@ -24,6 +24,12 @@ describe("Airport", function() {
       airport.land(plane);
       expect(airport._planes).toEqual([plane, plane]);
     });
+    it('does not allow plane to land if full', function() {
+      [1,2,3,4,5,6,7,8,9,10].forEach(function() {
+        airport.land(plane);
+      });
+      expect(function() {airport.land(plane)}).toThrowError('Unable to land, full...');
+    });
     it("should be able to take off a plane", function() {
       airport.land(plane);
       airport.takeoff(plane);
