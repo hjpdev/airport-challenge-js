@@ -13,3 +13,4 @@ describe("Airport", function() {
     airport.land(plane);
     expect(airport.planes[0]).toEqual(plane);
   });
+});

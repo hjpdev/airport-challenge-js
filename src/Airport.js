@@ -1,3 +1,3 @@
-function() Airport {
+function Airport() {
 
 }
